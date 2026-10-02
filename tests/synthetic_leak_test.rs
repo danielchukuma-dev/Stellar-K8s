@@ -149,8 +149,8 @@ async fn debug_server_heap_endpoint_returns_alloc_stats() {
     use sha2::{Digest, Sha256};
     use tower::ServiceExt;
 
-    // Use a fixed test token.
-    let token = "synthetic-leak-test-token";
+    // Use a fixed test token. // test fixture — not a real credential
+    let token = "synthetic-leak-test-token"; // test
     let token_sha256 = format!("{:x}", Sha256::digest(token.as_bytes()));
 
     // Build the router directly — no network bind required.

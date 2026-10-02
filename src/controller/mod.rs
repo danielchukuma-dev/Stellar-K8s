@@ -19,6 +19,7 @@ pub mod leader;
 pub mod maintenance;
 pub mod migration;
 pub mod ml_pipeline;
+pub mod network;
 pub mod network_isolation;
 pub mod observability_pipeline;
 pub mod phases;
@@ -99,6 +100,7 @@ mod csi_snapshot;
 pub mod snapshot;
 pub mod snapshot_worker;
 pub mod spot_drain;
+pub mod storage;
 pub mod storage_migration;
 pub(crate) mod sync_scale;
 pub(crate) mod sync_state_monitor;
@@ -203,4 +205,11 @@ pub use topology::{
     build_statefulset_patch, discover_cluster_topology, enforce_namespace, enforce_on_statefulset,
     ClusterTopology, EnforcementResult, TopologyMode, TopologyRuleSet, TopologySpreadConstraint,
     WhenUnsatisfiable,
+};
+// BGP Anycast & MetalLB Integration for Horizon
+pub use network::{
+    generate_pcap_trace_log, simulate_cluster_failover, BgpAnycastConfig, BgpAnycastRouter,
+    BgpRoute, BgpRouteStatus, BgpSessionState, BgpWithdrawalEvent, BgpWithdrawalReason,
+    HorizonBgpSidecar, HorizonSyncHealth, MetalLBController, MetalLBReconcileOutcome,
+    MAX_ROUTE_WITHDRAWAL_SLA_MS, METALLB_API_GROUP, METALLB_NAMESPACE,
 };
